@@ -3,4 +3,12 @@
   "extends": [
     "config:base",
   ],
+  "regexManagers": [
+    {
+      "fileMatch": ["^\\.github/workflows/.*\\.ya?ml$"],
+      "matchStrings": ['regclient_version: (?<currentValue>.*)\\n'],
+      "depNameTemplate": "regclient/regclient",
+      "datasourceTemplate": "github-releases",
+    },
+  ],
 }
