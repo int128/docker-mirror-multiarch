@@ -1,0 +1,22 @@
+name: mirror
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - run: curl -L -o regctl https://github.com/regclient/regclient/releases/latest/download/regctl-linux-amd64
+      - run: chmod 755 regctl
+
+      - uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - run: regctl image copy debian:stable ghcr.io/${{ github.repository }}/debian:stable
