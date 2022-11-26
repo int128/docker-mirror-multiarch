@@ -1,6 +1,6 @@
 # docker-mirror-multiarch [![mirror](https://github.com/int128/docker-mirror-multiarch/actions/workflows/mirror.yaml/badge.svg)](https://github.com/int128/docker-mirror-multiarch/actions/workflows/mirror.yaml)
 
-This repository shows how to mirror a multi-architecture Docker image.
+This repository shows how to mirror a multi-architecture Docker image such as `arm64` or `ppc64le`.
 
 ## Problem to solve
 
