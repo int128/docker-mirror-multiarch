@@ -6,6 +6,9 @@ on:
       - main
   pull_request:
 
+env:
+  regclient_version: v0.4.5
+
 jobs:
   copy:
     strategy:
@@ -16,8 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - run: curl -L -o regctl https://github.com/regclient/regclient/releases/latest/download/regctl-linux-amd64
+      - run: curl -L -o regctl 'https://github.com/regclient/regclient/releases/${{ env.regclient_version }}/download/regctl-linux-amd64'
       - run: chmod 755 regctl
+      - run: ./regctl version
 
       - uses: docker/login-action@v2
         with:
