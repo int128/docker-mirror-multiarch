@@ -19,4 +19,4 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - run: regctl image copy debian:stable ghcr.io/${{ github.repository }}/debian:stable
+      - run: ./regctl image copy debian:stable ghcr.io/${{ github.repository }}/debian:stable
