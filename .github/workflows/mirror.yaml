@@ -8,6 +8,11 @@ on:
 
 jobs:
   copy:
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - debian:stable
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -19,4 +24,4 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - run: ./regctl image copy debian:stable ghcr.io/${{ github.repository }}/debian:stable
+      - run: ./regctl image copy '${{ matrix.image }}' 'ghcr.io/${{ github.repository }}/${{ matrix.image }}'
