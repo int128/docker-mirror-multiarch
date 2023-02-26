@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  regclient_version: v0.4.5
+  regclient_version: v0.4.7
 
 jobs:
   copy:
